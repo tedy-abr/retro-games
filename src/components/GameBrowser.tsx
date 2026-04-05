@@ -4,6 +4,7 @@ import { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import GameCard from "./GameCard";
 import { Game } from "@/types/game";
+import { useFavorites } from "@/hooks/useFavorites";
 
 interface GameBrowserProps {
   initialGames: Game[];
@@ -14,7 +15,9 @@ export default function GameBrowser({ initialGames }: GameBrowserProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState("name-asc");
 
-  // Filter and sort the games before displaying them
+  // Call favorites hook
+  const { isFavorite, toggleFavorite } = useFavorites();
+
   const filteredAndSortedGames = initialGames
     .filter((game) =>
       game.name.toLowerCase().includes(searchQuery.toLowerCase()),
@@ -26,7 +29,6 @@ export default function GameBrowser({ initialGames }: GameBrowserProps) {
         case "name-desc":
           return b.name.localeCompare(a.name);
         case "year-newest":
-          // Convert string year to number
           return parseInt(b.released) - parseInt(a.released);
         case "year-oldest":
           return parseInt(a.released) - parseInt(b.released);
@@ -36,9 +38,8 @@ export default function GameBrowser({ initialGames }: GameBrowserProps) {
     });
 
   return (
-    <div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
-        {/* Search Input */}
         <div className="flex-1 relative">
           <IoSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
@@ -50,7 +51,6 @@ export default function GameBrowser({ initialGames }: GameBrowserProps) {
           />
         </div>
 
-        {/* Sort Dropdown */}
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
@@ -63,7 +63,6 @@ export default function GameBrowser({ initialGames }: GameBrowserProps) {
         </select>
       </div>
 
-      {/* Games Grid */}
       {filteredAndSortedGames.length === 0 ? (
         <div className="text-center py-12 text-gray-500 bg-white rounded-lg border border-gray-200">
           No games found matching "{searchQuery}".
@@ -74,7 +73,8 @@ export default function GameBrowser({ initialGames }: GameBrowserProps) {
             <GameCard
               key={game.id}
               game={game}
-              isFavorite={false} // To be implemented....
+              isFavorite={isFavorite(game.id)}
+              onToggleFavorite={() => toggleFavorite(game)}
             />
           ))}
         </div>
