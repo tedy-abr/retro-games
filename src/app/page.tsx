@@ -1,11 +1,36 @@
-import Image from "next/image";
+import { fetchGames } from "@/api/games";
+import GameCard from "@/components/GameCard";
 
-export default function Home() {
+export default async function HomePage() {
+  const gamesResponse = await fetchGames();
+  const games = gamesResponse.data;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <h1 className="text-amber-700 text-6xl">Hello, world!</h1>
-      </main>
+    <div>
+      {/* Hero */}
+      <div className="bg-linear-to-r from-indigo-600 to-purple-600 text-white rounded-2xl mb-8 shadow-md">
+        <div className="py-12 md:py-16 px-8 md:px-12">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            Discover Classic Games
+          </h1>
+          <p className="text-lg md:text-xl text-indigo-100 max-w-2xl">
+            Explore the golden age of gaming. Browse through a curated
+            collection of retro games that defined generations.
+          </p>
+        </div>
+      </div>
+
+      {/* Games Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {games.map((game) => (
+          <GameCard
+            key={game.id}
+            game={game}
+            // Pass false for now until real favorites functionality is implemented
+            isFavorite={false}
+          />
+        ))}
+      </div>
     </div>
   );
 }
