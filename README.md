@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RetroGames - Game Discovery App
 
-## Getting Started
+A responsive game discovery web application built for the Noroff JavaScript Frameworks Course Assignment.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Browse Classic Games:** Fetches and displays a responsive grid of retro games using the Noroff API.
+- **Game Details:** Dynamic routing to view individual game descriptions, release years, and genres.
+- **Search & Sort:** Client-side filtering by game name and sorting by title A-Z or release year.
+- **Dynamic Genres:** Automatically extracts and counts categories from the API data for a dedicated Genres browser.
+- **Favourites System:** Users can "heart" games to save them to a dedicated Favourites page.
+- **Storage:** Uses a custom React Context hook (`useFavorites`) and `localStorage` so favorites survive page reloads.
+- **Toast Notifications:** Feedback when adding or removing games from favorites.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** [Next.js (App Router)](https://nextjs.org/)
+- **Language:** TypeScript (Strict Mode)
+- **Styling:** Tailwind CSS
+- **Icons:** React Icons
+- **Notifications:** React Hot Toast
+- **API:** Noroff V2 API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Running the Project Locally
 
-## Learn More
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/tedy-abr/retro-games.git
+   
+2. Install dependencies:
+   npm install
 
-To learn more about Next.js, take a look at the following resources:
+3. Set up environment variables
+   Create a .env.local file in the root directory and add the following:
+   NEXT_PUBLIC_API_URL=https://v2.api.noroff.dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Run the development server:
+   npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Open your browser:
+Navigate to http://localhost:3000
