@@ -1,5 +1,5 @@
 import { fetchGames } from "@/api/games";
-import GameCard from "@/components/GameCard";
+import GameBrowser from "@/components/GameBrowser";
 
 export default async function HomePage() {
   const gamesResponse = await fetchGames();
@@ -20,17 +20,8 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* Games Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {games.map((game) => (
-          <GameCard
-            key={game.id}
-            game={game}
-            // Pass false for now until real favorites functionality is implemented
-            isFavorite={false}
-          />
-        ))}
-      </div>
+      {/* Search, Sort & Game Grid */}
+      <GameBrowser initialGames={games} />
     </div>
   );
 }
