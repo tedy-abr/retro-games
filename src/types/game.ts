@@ -13,6 +13,7 @@ export interface Game {
   genre: string[];
 }
 
+// Response type for GET /old-games
 export interface GamesResponse {
   data: Game[];
   meta: {
@@ -24,4 +25,10 @@ export interface GamesResponse {
     pageCount: number;
     totalCount: number;
   };
+}
+
+// Response type forGET /old-games/<id> & random
+export interface SingleGameResponse {
+  data: Game;
+  meta: Record<string, never>;
 }
