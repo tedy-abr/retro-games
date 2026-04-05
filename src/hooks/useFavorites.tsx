@@ -1,14 +1,28 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { Game } from "@/types/game";
 import toast from "react-hot-toast";
 
-export function useFavorites() {
-  // WStore full game objects
+interface FavoritesContextType {
+  favorites: Game[];
+  isFavorite: (gameId: number) => boolean;
+  toggleFavorite: (game: Game) => void;
+}
+
+const FavoritesContext = createContext<FavoritesContextType | undefined>(
+  undefined,
+);
+
+export function FavoritesProvider({ children }: { children: ReactNode }) {
   const [favorites, setFavorites] = useState<Game[]>([]);
 
-  // Run once load and check if there are any saved games
   useEffect(() => {
     const savedFavorites = localStorage.getItem("retro-games-favorites");
     if (savedFavorites) {
@@ -17,13 +31,11 @@ export function useFavorites() {
     }
   }, []);
 
-  // Save favorites array to React state and localStorage
   const saveFavorites = (newFavorites: Game[]) => {
     setFavorites(newFavorites);
     localStorage.setItem("retro-games-favorites", JSON.stringify(newFavorites));
   };
 
-  // Check if a specific game is already favorite by comparing IDs
   const isFavorite = (gameId: number) => {
     return favorites.some((favGame) => favGame.id === gameId);
   };
@@ -42,9 +54,19 @@ export function useFavorites() {
     }
   };
 
-  return {
-    favorites,
-    isFavorite,
-    toggleFavorite,
-  };
+  return (
+    <FavoritesContext.Provider
+      value={{ favorites, isFavorite, toggleFavorite }}
+    >
+      {children}
+    </FavoritesContext.Provider>
+  );
+}
+
+export function useFavorites() {
+  const context = useContext(FavoritesContext);
+  if (context === undefined) {
+    throw new Error("useFavorites must be used within a FavoritesProvider");
+  }
+  return context;
 }

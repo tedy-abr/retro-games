@@ -1,4 +1,3 @@
-// src/components/FavoriteButton.tsx
 "use client";
 
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
