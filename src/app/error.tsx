@@ -19,8 +19,7 @@ export default function Error({
         Something went wrong!
       </h2>
       <p className="text-gray-600 mb-6 max-w-md">
-        We couldn't load the games right now. The API might be sleeping, or
-        there might be a connection issue.
+        Could not load the games right now. There might be a connection issue.
       </p>
       <button
         onClick={() => reset()}

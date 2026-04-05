@@ -12,6 +12,7 @@ export function useFavorites() {
   useEffect(() => {
     const savedFavorites = localStorage.getItem("retro-games-favorites");
     if (savedFavorites) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFavorites(JSON.parse(savedFavorites));
     }
   }, []);

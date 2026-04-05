@@ -27,8 +27,7 @@ export default function FavouritesPage() {
             No favourites yet!
           </h2>
           <p className="text-gray-600 mb-8 max-w-md mx-auto">
-            You haven't saved any games to your collection. Go explore the
-            classics and click the heart icon to save them here.
+            No saved games found
           </p>
           <Link
             href="/"

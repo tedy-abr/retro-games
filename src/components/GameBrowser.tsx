@@ -65,7 +65,7 @@ export default function GameBrowser({ initialGames }: GameBrowserProps) {
 
       {filteredAndSortedGames.length === 0 ? (
         <div className="text-center py-12 text-gray-500 bg-white rounded-lg border border-gray-200">
-          No games found matching "{searchQuery}".
+          No games found matching &quot;{searchQuery}&quot;.
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
