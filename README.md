@@ -1,41 +1,56 @@
-# RetroGames - Game Discovery App
+# RetroGames
 
-A responsive game discovery web application built for the Noroff JavaScript Frameworks Course Assignment.
+![RetroGames Home Page](./screenshots/RetroGames-HomePage.png)
 
-## Features
+## 📖 Description
 
-- **Browse Classic Games:** Fetches and displays a responsive grid of retro games using the Noroff API.
-- **Game Details:** Dynamic routing to view individual game descriptions, release years, and genres.
-- **Search & Sort:** Client-side filtering by game name and sorting by title A-Z or release year.
-- **Dynamic Genres:** Automatically extracts and counts categories from the API data for a dedicated Genres browser.
-- **Favourites System:** Users can "heart" games to save them to a dedicated Favourites page.
-- **Storage:** Uses a custom React Context hook (`useFavorites`) and `localStorage` so favorites survive page reloads.
-- **Toast Notifications:** Feedback when adding or removing games from favorites.
+RetroGames is a modern, responsive game discovery web application built for the Noroff JavaScript Frameworks course assignment. It allows users to explore the golden age of gaming by browsing a curated collection of retro games. Users can search for specific titles, sort games alphabetically or by release year, view detailed game information, browse by genre, and save their favourite games to a personal collection.
+
+## Live Demo & Repository
+
+- **Live Site:** [RetroGames Live Site](https://retro-games-tawny.vercel.app/)
+- **GitHub Repository:** [retro-games](https://github.com/tedy-abr/retro-games)
 
 ## Tech Stack
 
-- **Framework:** [Next.js (App Router)](https://nextjs.org/)
-- **Language:** TypeScript (Strict Mode)
-- **Styling:** Tailwind CSS
-- **Icons:** React Icons
-- **Notifications:** React Hot Toast
-- **API:** Noroff V2 API
+- **Next.js 16** (App Router)
+- **TypeScript**
+- **Tailwind CSS v4**
+- **React Icons** & **React Hot Toast**
 
-## Running the Project Locally
+## Main Features
 
-1. **Clone the repository:**
+- **Game Discovery:** Browse, search, and sort a curated list of classic games.
+- **Dynamic Routing:** View detailed individual game pages and browse categories by genre.
+- **Persistent Favourites:** Save games to a personal collection (built with React Context API and `localStorage`).
+- **Responsive UI:** Fully responsive design with animated skeleton loading states and robust error handling.
+
+## Getting Started
+
+1. Clone the repository:
+
    ```bash
    git clone https://github.com/tedy-abr/retro-games.git
-   
-2. Install dependencies:
-   npm install
+   ```
 
-3. Set up environment variables
-   Create a .env.local file in the root directory and add the following:
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env.local` file in the root directory and add the following:
+
+   ```env
    NEXT_PUBLIC_API_URL=https://v2.api.noroff.dev
+   ```
 
 4. Run the development server:
+
+   ```bash
    npm run dev
+   ```
 
 5. Open your browser:
-Navigate to http://localhost:3000
+   Navigate to [http://localhost:3000](http://localhost:3000)

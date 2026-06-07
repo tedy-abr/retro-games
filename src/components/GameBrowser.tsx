@@ -45,6 +45,7 @@ export default function GameBrowser({ initialGames }: GameBrowserProps) {
           <input
             type="text"
             placeholder="Search games..."
+            aria-label="Search games"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
@@ -54,6 +55,7 @@ export default function GameBrowser({ initialGames }: GameBrowserProps) {
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
+          aria-label="Sort games"
           className="w-full sm:w-50 px-4 py-2.5 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 appearance-none cursor-pointer"
         >
           <option value="name-asc">Name A-Z</option>
